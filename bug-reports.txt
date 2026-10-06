@@ -1,0 +1,42 @@
+-----------------------------------------------------------------------------------------
+Bug 1. api/accounts response returns different error structures when unsuccessful
+Not exactly a bug but a potential inconsistency
+
+Steps to Reproduce
+1. Go to https://app.qa.nesto.ca/signup
+2. Fill out the sign up form and use an existing email
+3. Submit the form
+4. Observe the response of api/accounts
+5. Change the email to a placeholder email (eg. @example.com)
+6. Submit the form
+7. Observe the response of api/accounts again and compare
+
+Expected Results
+the response object should have similar structures
+
+Actual Results
+the response for duplicate email:
+{
+  error: 'bad format',
+  description: 'error creating account'
+}
+
+the response for placeholder email error:
+{
+  error: 'invalid parameters',
+  parameters: ['placeholder email detected'],
+}
+
+-----------------------------------------------------------------------------------------
+Bug 2. Unsuccessful sign up submission shows generic error message
+Might be purposeful but might be a bad user experience
+
+Steps to Reproduce
+1. Go to https://app.qa.nesto.ca/signup
+2. Fill out the sign up form and use a placeholder email
+3. Submit the form
+
+Expected Results:
+a clear validation message like “Please use a real email address; placeholder domains are not allowed.”
+Actual Results:
+the user sees a generic failure that doesn’t explain what went wrong.
