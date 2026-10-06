@@ -75,7 +75,7 @@ npx playwright show-report
 - Placeholder emails such as example.com should be rejected. The current API status codes and response bodies are treated as behavior to verify, though their inconsistency is also noted in the bug report.
 - A successful signup returns HTTP 201, includes the submitted account details in the response, and leaves the user on an account page.
 - Assumes that the email database is regularly cleared. The duplicate email test creates an account, then retries using the same email to verify the duplicate account response.
-- English and French are the supported languages for this suite, implemention would need to change if other languages are added 
+- English and French are the supported languages for this suite, implemention would need to change if other languages are added
 - Canada and the United States phone numbers are potential expected phone-country options.
 - The contact-consent checkbox should be unchecked by default, due to anti-spam requirements.
 
@@ -84,3 +84,4 @@ npx playwright show-report
 - Add accessibility tests
 - Create a reusable test harness to handle the locale instead of the current repeated setup
 - Improve the platform specific test selection. Currently Mobile Only tests are skipped by Desktop devices, causing the final result to display an set of skipped tests without explanation
+- More thorough validation of API request and form limits
